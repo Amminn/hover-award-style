@@ -1,24 +1,22 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+import gsap from "gsap";
+import SplitText from "gsap/SplitText";
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+gsap.registerPlugin(SplitText);
 
-setupCounter(document.querySelector('#counter'))
+document.addEventListener("DOMContentLoaded", () => {
+  const profileImagesContainer = document.querySelector("profile-image");
+  const profileImages = document.querySelectorAll(".profile-images .img");
+
+  const nameElements = document.querySelectorAll(".profile-names .name");
+  const nameHeadings = document.querySelectorAll(".profile-names .name h2");
+
+  nameHeadings.forEach((heading) => {
+    const split = new SplitText(heading, { type: "chars" });
+    split.chars.forEach((char) => {
+      char.classList.add("letter");
+    });
+  });
+
+  const defaultLetters = nameElements[0].querySelectorAll(".letter");
+  gsap.set(defaultLetters, { y: "100%" });
+});
