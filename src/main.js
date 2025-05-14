@@ -4,8 +4,8 @@ import SplitText from "gsap/SplitText";
 gsap.registerPlugin(SplitText);
 
 document.addEventListener("DOMContentLoaded", () => {
-  const profileImagesContainer = document.querySelector("profile-image");
-  const profileImages = document.querySelectorAll(".profile-images .img");
+  const profileImagesContainer = document.querySelector("profile-images");
+  const profileImages = document.querySelectorAll(".profile-images img");
 
   const nameElements = document.querySelectorAll(".profile-names .name");
   const nameHeadings = document.querySelectorAll(".profile-names .name h2");
@@ -61,6 +61,18 @@ document.addEventListener("DOMContentLoaded", () => {
             from: "center",
           }
         })
+      })
+    })
+
+    profileImagesContainer.addEventListener("mouseleave", () => {
+      gsap.to(defaultLetters, {
+        y: "100%",
+        ease: "power4.out",
+        duration: 0.75,
+        stagger: {
+          each: 0.025,
+          from: "center",
+        }
       })
     })
   }
