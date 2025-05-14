@@ -19,4 +19,49 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const defaultLetters = nameElements[0].querySelectorAll(".letter");
   gsap.set(defaultLetters, { y: "100%" });
+
+  if (window.innerWidth >= 900) {
+    profileImages.forEach((img, index) => {
+      const correspondingName = nameElements[index + 1];
+      const letters = correspondingName.querySelectorAll(".letter");
+
+      img.addEventListener("mouseenter", () => {
+        gsap.to(img, {
+          width: 140,
+          height: 140,
+          duration: 0.5,
+          ease: "power4.out"
+        });
+
+        gsap.to(letters, {
+          y: "-100%",
+          ease: "power4.out",
+          duration: 0.75,
+          stagger: {
+            each: 0.025,
+            from: "center",
+          }
+        })
+      });
+
+      img.addEventListener("mouseleave", () => {
+        gsap.to(img, {
+          width: 70,
+          height: 70,
+          duration: 0.5,
+          ease: "power4.out"
+        });
+
+        gsap.to(letters, {
+          y: "0%",
+          ease: "power4.out",
+          duration: 0.75,
+          stagger: {
+            each: 0.025,
+            from: "center",
+          }
+        })
+      })
+    })
+  }
 });
