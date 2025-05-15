@@ -51,7 +51,6 @@ section {
   align-items: center;
   gap: 2.5em;
   overflow: hidden;
-  border: 1px solid white;
 }
 
 .profile-images {
@@ -68,6 +67,7 @@ img {
   padding: 5px;
   cursor: pointer;
   will-change: width, height;
+  /* outline: 1px solid red; */
 }
 
 .img img {
@@ -90,7 +90,7 @@ img {
   font-size: 20rem;
   font-weight: 900;
   letter-spacing: -0.5rem;
-  line-height: 1;
+  line-height: 0.9;
   color: #f93535;
   user-select: none;
   transform: translateY(100%);
