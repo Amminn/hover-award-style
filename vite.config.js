@@ -2,7 +2,7 @@
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  base: "/hover-award-style/", // replace with your repo name
+  base: "/", // important for subdomain or root hosting
   build: {
     outDir: "dist",
   },
